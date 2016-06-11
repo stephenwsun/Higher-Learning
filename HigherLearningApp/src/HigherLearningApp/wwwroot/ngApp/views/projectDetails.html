@@ -1,0 +1,23 @@
+﻿<a href="/everything">Back to questions</a>
+
+<h1>Project: {{controller.project.title}}</h1>
+<hr />
+<h3>{{controller.project.body}}</h3>
+
+
+<ul>
+    <li ng-repeat="comment in controller.project.comments">{{comment.message}} {{comment.time | date: "longDate"}}</li>
+</ul>
+
+<form id="commentForm" ng-submit="controller.saveComment()">
+    <div>
+        <input ng-model="controller.comment.message" />
+        <input type="submit" value="Save" />
+        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+    </div>
+    <div>
+        <input type="button" value="Thumbs Up" />
+        <input type="button" value="Thumbs Down" />
+
+    </div>
+</form>

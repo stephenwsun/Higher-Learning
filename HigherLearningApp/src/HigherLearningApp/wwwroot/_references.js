@@ -16,6 +16,7 @@
 /// <reference path="ngapp/controllers/contactcontrollers.js" />
 /// <reference path="ngapp/controllers/controllers.js" />
 /// <reference path="ngapp/controllers/embeddedsystemscontroller.js" />
+/// <reference path="ngapp/controllers/everythingcontroller.js" />
 /// <reference path="ngapp/controllers/learncontroller.js" />
 /// <reference path="ngapp/controllers/printingcontroller.js" />
 /// <reference path="ngapp/controllers/projectscontroller.js" />

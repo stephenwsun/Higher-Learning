@@ -75,7 +75,7 @@ namespace HigherLearningApp {
             .state('everything', {
                 url: '/everything',
                 templateUrl: '/ngApp/views/everything.html',
-                controller: HigherLearningApp.Controllers.ProjectsController,
+                controller: HigherLearningApp.Controllers.EverythingController,
                 controllerAs: 'controller'
             })
             //-----------------------------------------------------------------------//

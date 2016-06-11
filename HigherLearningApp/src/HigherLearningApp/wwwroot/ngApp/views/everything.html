@@ -1,0 +1,27 @@
+﻿<h1>Projects</h1>
+
+<h3><a href="/projects/create">Create new project</a></h3>
+<br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Category</th>
+        <th>Last edited</th>
+        <th>View Count</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="project in controller.projects">
+        <td>{{project.id}}</td>
+        <td><a href="/projects/details/{{project.id}}">{{project.title}}</a></td>
+        <td>{{project.body}}</td>
+        <td>{{project.category}}</td>
+        <td>{{project.time | date: "longDate"}}</td>
+        <td>{{project.views}}</td>
+        <td>
+            <a href="/projects/edit/{{project.id}}">Edit</a> |
+            <a href="/projects/delete/{{project.id}}">Delete</a>
+        </td>
+    </tr>
+</table>

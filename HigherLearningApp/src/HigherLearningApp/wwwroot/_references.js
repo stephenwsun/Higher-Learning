@@ -21,4 +21,5 @@
 /// <reference path="ngapp/controllers/projectscontroller.js" />
 /// <reference path="ngapp/controllers/webdevelopmentcontroller.js" />
 /// <reference path="ngapp/services/accountservice.js" />
+/// <reference path="ngapp/services/projectservices.js" />
 /// <reference path="ngapp/services/services.js" />

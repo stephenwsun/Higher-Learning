@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using HigherLearningApp.Data;
+using HigherLearningApp.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,15 +31,36 @@ namespace HigherLearningApp.API
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
+            project.Views++;
+            _db.SaveChanges();
+            return Ok(project);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Project project)
         {
+            if(project.Id == 0)
+            {
+                _db.Projects.Add(project);
+                _db.SaveChanges();
+            }
+            else
+            {
+                var projectEdit = _db.Projects.FirstOrDefault(p => p.Id == project.Id);
+                projectEdit.Title = project.Title;
+                projectEdit.Body = project.Body;
+                projectEdit.Category = project.Category;
+                projectEdit.Votes = project.Votes;
+                projectEdit.Views = project.Views;
+                projectEdit.Time = DateTime.UtcNow;
+                _db.SaveChanges();
+            }
+
+            return Ok();
         }
 
         // PUT api/values/5
@@ -48,8 +71,12 @@ namespace HigherLearningApp.API
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
+            _db.Projects.Remove(project);
+            _db.SaveChanges();
+            return Ok();
         }
     }
 }

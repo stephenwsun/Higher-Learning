@@ -43,6 +43,43 @@ namespace HigherLearningApp {
                 controller: HigherLearningApp.Controllers.ProjectsController,
                 controllerAs: 'controller'
             })
+
+            //-----------------------Project Creation for Users-----------------------//
+            .state('projectDetails', {
+                url: '/projects/details/:id',
+                templateUrl: '/ngApp/views/projectDetails.html',
+                controller: HigherLearningApp.Controllers.ProjectDetailsController,
+                controllerAs: 'controller'
+            })
+            .state('projectCreate', {
+                url: '/projects/create',
+                templateUrl: '/ngApp/views/projectCreate.html',
+                controller: HigherLearningApp.Controllers.ProjectCreateController,
+                controllerAs: 'controller'
+            })
+            .state('projectDelete', {
+                url: '/projects/delete/:id',
+                templateUrl: '/ngApp/views/projectDelete.html',
+                controller: HigherLearningApp.Controllers.ProjectDeleteController,
+                controllerAs: 'controller'
+            })
+            .state('projectEdit', {
+                url: '/projects/edit/:id',
+                templateUrl: '/ngApp/views/projectEdit.html',
+                controller: HigherLearningApp.Controllers.ProjectEditController,
+                controllerAs: 'controller'
+            })
+            //-----------------------------------------------------------------------//
+
+            //-----------------------A Page for All Projects-------------------------//
+            .state('everything', {
+                url: '/everything',
+                templateUrl: '/ngApp/views/everything.html',
+                controller: HigherLearningApp.Controllers.ProjectsController,
+                controllerAs: 'controller'
+            })
+            //-----------------------------------------------------------------------//
+
             .state('3dprinting', {
                 url: '/3DPrinting',
                 templateUrl: '/ngApp/views/3DPrinting.html',

@@ -8,7 +8,7 @@ using HigherLearningApp.Data;
 namespace HigherLearningApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160611004748_Projects")]
+    [Migration("20160611203255_Projects")]
     partial class Projects
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

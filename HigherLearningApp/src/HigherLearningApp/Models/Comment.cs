@@ -11,5 +11,6 @@ namespace HigherLearningApp.Models
         public string Message { get; set; }
         public int Votes { get; set; }
         public DateTime Time { get; set; }
+        //public ICollection<ApplicationUser> ApplicationUser { get; set; }
     }
 }

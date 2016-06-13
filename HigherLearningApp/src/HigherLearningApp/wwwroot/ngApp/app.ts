@@ -1,10 +1,15 @@
 namespace HigherLearningApp {
 
-    angular.module('HigherLearningApp', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('HigherLearningApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        filepickerProvider
     ) => {
+
+        // Filestack API key
+        filepickerProvider.setKey('	A6kptWpyQQ9KdU6rI9TkBz');
+
         // Define routes
         $stateProvider
             .state('home', {

@@ -1,4 +1,4 @@
-﻿<a href="/everything">Back to questions</a>
+﻿<!--<a href="/everything">Back to questions</a>
 
 <h1>Project: {{controller.project.title}}</h1>
 <hr />
@@ -20,4 +20,41 @@
         <input type="button" value="Thumbs Down" />
 
     </div>
-</form>
+</form>-->
+
+
+<a href="/everything">Back to questions</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>{{controller.project.title}}</h1>
+    </div>
+    <div class="col-md-12">
+        <h3>{{controller.project.body}}</h3>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <form id="commentForm">
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="controller.comment.message" placeholder="add your comment here..." />
+        </div>
+        <div class="col-md-2">
+            <input type="button" class="btn btn-primary btn-block" value="Add Comment" ng-click="controller.saveComment()" />
+        </div>
+    </form>
+
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <h5>Comments</h5>
+        <ul>
+            <li ng-repeat="comment in controller.project.comments">
+                {{comment.message}}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -32,7 +32,7 @@
         saveComment() {
             this.projectServices.saveComment(this.projectId, this.comment).then(() => {
                 this.getProject();
-                let element: any = document.getElementById('commentForm');
+                let element: any = document.getElementById("commentForm");
                 element.reset();
             });
         }
@@ -45,8 +45,9 @@
     export class ProjectCreateController {
 
         public project;
+        public file;
 
-        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService) {
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, private filepickerService: any, private $scope: ng.IScope) {
 
         }
 
@@ -59,6 +60,24 @@
         cancel() {
             this.$state.go('everything');
         }
+
+        // Filestack code
+        public pickFile() {
+            this.filepickerService.pick({
+                mimetype: 'image/*'
+            }, this.fileUploaded.bind(this));
+        }
+
+        public fileUploaded(file) {
+            this.file = file;
+            console.log(this.file);
+
+            // generally you want to put your code here that will send the url info to the database
+
+
+            this.$scope.$apply();   //all this does is re-calls the controller (refresh)
+        }
+
     }
 
     export class ProjectEditController {

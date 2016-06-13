@@ -1,46 +1,19 @@
 ﻿<div class="row navSpacer"></div>
 
-<h1>Projects</h1>
-
-<h3><a href="/projects/create">Create new project</a></h3>
-<br />
-<!--<table class="table table-bordered table-striped">
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Category</th>
-        <th>Last edited</th>
-        <th>View Count</th>
-        <th></th>
-    </tr>
-    <tr ng-repeat="project in controller.projects">
-        <td>{{project.id}}</td>
-        <td><a href="/projects/details/{{project.id}}">{{project.title}}</a></td>
-        <td>{{project.body}}</td>
-        <td>{{project.category}}</td>
-        <td>{{project.time | date: "longDate"}}</td>
-        <td>{{project.views}}</td>
-        <td>
-            <a href="/projects/edit/{{project.id}}">Edit</a> |
-            <a href="/projects/delete/{{project.id}}">Delete</a>
-        </td>
-    </tr>
-</table>-->
-
-
-
-<!--<div class="square" ng-repeat="project in controller.projects">
-    <div class="content">
-        <h2><a href="/projects/details/{{project.id}}">{{project.title}}</a></h2><br>
-        <h3>{{project.body}}</h3>
-        <h4>{{project.category}}</h4> 
-        <h4>{{project.time | date: "longDate"}}</h4> 
-        <h4>{{project.views}}</h4>
-        <a href="/projects/edit/{{project.id}}">Edit</a> |
-        <a href="/projects/delete/{{project.id}}">Delete</a>
+<div class="container">
+    <div class="row title">
+        <h1><span class="title">Everything</span></h1>
     </div>
-</div>-->
+</div>
+
+<div class="row titleSpacer"></div>
+
+<div class="container col-md-12">
+    <hr />
+    <a href="/projects/create" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-edit"></span> Publish a New Project</a>
+    <hr />
+</div>
+
 
 <div id="blogPost" class="container col-md-12" ng-repeat="project in controller.projects">
     <div class="panel panel-default">
@@ -74,23 +47,22 @@
                 <p class="post">
                     {{project.body}}
                 </p>
-                <p>
+            </div>
+            <div class="panel-footer">
+                <p class="alignLeft">
+                    Date Created: {{project.time | date: "longDate"}} <br />
                     Category: {{project.category}}
-                </p>
-                <p>
-                    Date Created: {{project.time | date: "longDate"}}
-                </p>
-                <p>
-                    Views: <i class="fa fa-eye" fa-2x aria-hidden="true"></i>{{project.views}}
-                </p>
-                <p>
+                <p class="alignRight">
+                    Views: <i class="fa fa-eye" fa-2x aria-hidden="true"></i>{{project.views}} <br />
                     <a href="/projects/edit/{{project.id}}">Edit</a> |
                     <a href="/projects/delete/{{project.id}}">Delete</a>
                 </p>
             </div>
         </div>
     </div>
-    <div class="row spacer"></div>
+    <hr /> 
 </div>
+
+    
 
 

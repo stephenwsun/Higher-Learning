@@ -1,6 +1,13 @@
 ﻿<div class="row navSpacer"></div>
 
-<h1>Create Project</h1>
+<div class="container">
+    <div class="row title">
+        <h1><span class="title">Publish a New Project</span></h1>
+    </div>
+</div>
+
+<div class="row titleSpacer"></div>
+
 <form ng-submit="controller.saveProject()">
     <div>
         <label>Title</label>
@@ -16,5 +23,12 @@
     </div>
     <input type="submit" value="Create" />
     <input type="button" ng-click="controller.cancel()" value="Cancel" />
-
 </form>
+
+
+
+
+
+<button ng-click="controller.pickFile()">Upload</button>
+
+<img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />

@@ -14,11 +14,11 @@ namespace HigherLearningApp.API
     [Route("api/[controller]")]
     public class CommentController : Controller
     {
-        private ApplicationDbContext _db;
+        static ApplicationDbContext _db;
 
         public CommentController(ApplicationDbContext db)
         {
-            this._db = db;
+            _db = db;
         }
 
         // GET: api/values
@@ -36,7 +36,7 @@ namespace HigherLearningApp.API
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost("{id}")]
         public IActionResult Post(int id, [FromBody]Comment comment)
         {
             var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();

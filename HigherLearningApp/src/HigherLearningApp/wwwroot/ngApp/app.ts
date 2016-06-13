@@ -1,6 +1,6 @@
 namespace HigherLearningApp {
 
-    angular.module('HigherLearningApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config((
+    angular.module('HigherLearningApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker', 'textAngular']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,

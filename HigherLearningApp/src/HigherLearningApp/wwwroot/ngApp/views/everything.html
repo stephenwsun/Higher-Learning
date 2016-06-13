@@ -1,8 +1,10 @@
-﻿<h1>Projects</h1>
+﻿<div class="row navSpacer"></div>
+
+<h1>Projects</h1>
 
 <h3><a href="/projects/create">Create new project</a></h3>
 <br />
-<table class="table table-bordered table-striped">
+<!--<table class="table table-bordered table-striped">
     <tr>
         <th>Id</th>
         <th>Title</th>
@@ -24,4 +26,71 @@
             <a href="/projects/delete/{{project.id}}">Delete</a>
         </td>
     </tr>
-</table>
+</table>-->
+
+
+
+<!--<div class="square" ng-repeat="project in controller.projects">
+    <div class="content">
+        <h2><a href="/projects/details/{{project.id}}">{{project.title}}</a></h2><br>
+        <h3>{{project.body}}</h3>
+        <h4>{{project.category}}</h4> 
+        <h4>{{project.time | date: "longDate"}}</h4> 
+        <h4>{{project.views}}</h4>
+        <a href="/projects/edit/{{project.id}}">Edit</a> |
+        <a href="/projects/delete/{{project.id}}">Delete</a>
+    </div>
+</div>-->
+
+<div id="blogPost" class="container col-md-12" ng-repeat="project in controller.projects">
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="/projects/details/{{project.id}}">{{project.title}}</a></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Sample Picture 1</div>
+                        <div class="panel-body">
+                            <img src="../../images/Computers Picture.jpg" alt="" class="img-responsive center-block" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Sample Picture 2</div>
+                        <div class="panel-body">
+                            <img src="../../images/Embedded Systems Picture.jpeg" alt="" class="img-responsive center-block" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Sample Picture 3</div>
+                        <div class="panel-body">
+                            <img src="../../images/Web Development Picture.jpg" alt="" class="img-responsive center-block" />
+                        </div>
+                    </div>
+                </div>
+                <p class="post">
+                    {{project.body}}
+                </p>
+                <p>
+                    Category: {{project.category}}
+                </p>
+                <p>
+                    Date Created: {{project.time | date: "longDate"}}
+                </p>
+                <p>
+                    Views: <i class="fa fa-eye" fa-2x aria-hidden="true"></i>{{project.views}}
+                </p>
+                <p>
+                    <a href="/projects/edit/{{project.id}}">Edit</a> |
+                    <a href="/projects/delete/{{project.id}}">Delete</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row spacer"></div>
+</div>
+
+

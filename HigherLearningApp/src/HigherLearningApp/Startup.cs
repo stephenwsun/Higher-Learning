@@ -13,6 +13,7 @@ using Newtonsoft.Json.Serialization;
 using HigherLearningApp.Data;
 using HigherLearningApp.Models;
 using HigherLearningApp.Services;
+using HigherLearningApp.Repositories;
 
 namespace HigherLearningApp
 {
@@ -40,6 +41,11 @@ namespace HigherLearningApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Dependency Injection
+            services.AddScoped<IGenericRepository, GenericRepository>();
+            services.AddScoped<IProjectServices, ProjectServices>();
+            services.AddScoped<ICommentServices, CommentServices>();
+
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

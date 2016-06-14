@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HigherLearningApp.Data;
 using HigherLearningApp.Models;
 using Microsoft.EntityFrameworkCore;
+using HigherLearningApp.Services;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,11 +15,11 @@ namespace HigherLearningApp.API
     [Route("api/[controller]")]
     public class CommentController : Controller
     {
-        static ApplicationDbContext _db;
+        private ICommentServices _repo;
 
-        public CommentController(ApplicationDbContext db)
+        public CommentController(ICommentServices repo)
         {
-            _db = db;
+            _repo = repo;
         }
 
         // GET: api/values
@@ -39,11 +40,15 @@ namespace HigherLearningApp.API
         [HttpPost("{id}")]
         public IActionResult Post(int id, [FromBody]Comment comment)
         {
-            var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
-            project.Comments.Add(comment);
-            _db.SaveChanges();
-
-            return Ok();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                _repo.SaveComment(id, comment);
+                return Ok();
+            }
         }
 
         // PUT api/values/5

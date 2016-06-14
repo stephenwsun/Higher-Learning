@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HigherLearningApp.Data;
 using HigherLearningApp.Models;
+using HigherLearningApp.Services;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,18 +15,18 @@ namespace HigherLearningApp.API
     [Route("api/[controller]")]
     public class ProjectController : Controller
     {
-        private ApplicationDbContext _db;
+        private IProjectServices _repo;
 
-        public ProjectController(ApplicationDbContext db)
+        public ProjectController(IProjectServices repo)
         {
-            this._db = db;
+            _repo = repo;
         }
 
         // GET: api/values
         [HttpGet]
         public IActionResult Get()
         {
-            var projects = _db.Projects.ToList();
+            var projects = _repo.GetProjects();
             return Ok(projects);
         }
 
@@ -33,9 +34,7 @@ namespace HigherLearningApp.API
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
-            project.Views++;
-            _db.SaveChanges();
+            var project = _repo.GetProject(id);
             return Ok(project);
         }
 
@@ -43,24 +42,15 @@ namespace HigherLearningApp.API
         [HttpPost]
         public IActionResult Post([FromBody]Project project)
         {
-            if(project.Id == 0)
+            if (!ModelState.IsValid)
             {
-                _db.Projects.Add(project);
-                _db.SaveChanges();
+                return BadRequest(ModelState);
             }
             else
             {
-                var projectEdit = _db.Projects.FirstOrDefault(p => p.Id == project.Id);
-                projectEdit.Title = project.Title;
-                projectEdit.Body = project.Body;
-                projectEdit.Category = project.Category;
-                projectEdit.Votes = project.Votes;
-                projectEdit.Views = project.Views;
-                projectEdit.Time = DateTime.UtcNow;
-                _db.SaveChanges();
-            }
-
-            return Ok();
+                _repo.SaveProject(project);
+                return Ok();
+            }  
         }
 
         // PUT api/values/5
@@ -73,10 +63,15 @@ namespace HigherLearningApp.API
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var project = _db.Projects.Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
-            _db.Projects.Remove(project);
-            _db.SaveChanges();
-            return Ok();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                _repo.DeleteProject(id);
+                return Ok();
+            }           
         }
     }
 }

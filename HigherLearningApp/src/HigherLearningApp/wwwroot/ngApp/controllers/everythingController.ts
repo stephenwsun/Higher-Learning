@@ -101,6 +101,10 @@
                 });
             });
         }
+
+        cancel() {
+            this.$state.go('everything');
+        }
     }
 
     export class ProjectDeleteController {

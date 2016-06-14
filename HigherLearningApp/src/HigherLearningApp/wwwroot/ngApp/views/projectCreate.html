@@ -8,25 +8,6 @@
 
 <div class="row titleSpacer"></div>
 
-<form ng-submit="controller.saveProject()">
-    <div>
-        <label>Title</label>
-        <input type="text" ng-model="controller.project.title" />
-    </div>
-    <div>
-        <label>Body</label>
-        <input type="text" ng-model="controller.project.body" />
-    </div>
-    <div>
-        <label>Category</label>
-        <input type="text" ng-model="controller.project.category" />
-    </div>
-    <input type="submit" value="Create" />
-    <input type="button" ng-click="controller.cancel()" value="Cancel" />
-</form>
-
-
-
 <hr />
 
 <button ng-click="controller.pickFile()">Upload</button>
@@ -35,7 +16,29 @@
 
 <hr />
 
-<div class="container col-md-12">
-    <center><div text-angular ng-model="htmlVariable"></div></center>
-</div>
+<form ng-submit="controller.saveProject()">
+    <div class="container col-md-12">
+        <input type="text" id="title" ng-model="controller.project.title" placeholder="Enter a post title..."/>
+    </div>
+    <div class="row spacer"></div>
+    <div class="row spacer"></div>
+    <div class="container col-md-12">
+        <div text-angular ng-model="controller.project.body" placeholder="Write here..." ta-toolbar-class="btn-toolbar" ta-toolbar-group-class="btn-group" ta-toolbar-button-class="btn btn-primary" ta-toolbar-active-button-class="active"></div>
+    </div>
+    <div class="container col-md-12">
+        <input type="text" ng-model="controller.project.category" placeholder="Category..."/>
+    </div>
+
+    <div class="row spacer"></div>
+    <div class="row spacer"></div>
+
+
+    <div class="container col-md-12">
+        <input type="submit" value="Create Project" />
+        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+    </div>
+</form>
+
+<div class="row spacer"></div>
+
 

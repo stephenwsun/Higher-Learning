@@ -20,6 +20,7 @@ namespace HigherLearningApp.Services
         public void SaveComment(int id, Comment comment)
         {
             var project = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
+            comment.Time = DateTime.UtcNow;
             project.Comments.Add(comment);
             _repo.SaveChanges();
         }

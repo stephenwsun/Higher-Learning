@@ -34,6 +34,7 @@ namespace HigherLearningApp.Services
         {
             if(project.Id == 0)
             {
+                project.Time = DateTime.UtcNow;
                 _repo.Add(project);
             }
             else

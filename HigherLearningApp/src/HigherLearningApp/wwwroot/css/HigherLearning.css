@@ -185,7 +185,7 @@ p.copyright {
 }
 
 .navSpacer{
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .titleSpacer{
@@ -262,9 +262,20 @@ p.copyright {
     height: 200px;
 }
 
-#post-comment{
+#post-comment, #category-button{
     position: absolute;
     right:330px;
+}
+
+#project-date{
+    position: absolute;
+    right:920px;
+}
+
+#comment-title{
+    font: 400 60px/1.2 'Merienda One', Helvetica, sans-serif;           /*Merienda font*/
+    color: rgba(0,0,0,0.7);
+    text-shadow: 3px 3px 3px #fff;
 }
 
 .project-comment::before,

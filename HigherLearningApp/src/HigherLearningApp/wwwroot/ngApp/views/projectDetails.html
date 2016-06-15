@@ -33,12 +33,14 @@
 <div class="row titleSpacer"></div>
 
 <div class="row">
-    <div class="container col-md-2 col-md-offset-6">
-        <div>{{controller.project.time | date: "longDate"}}</div>
+    <div class="container">
+        <div id="project-date">
+            {{controller.project.time | date: "longDate"}}
+        </div>
     </div>
 </div>
 
-<a href="/projects">Back to Projects</a>
+<div class="row spacer"></div>
 
 <div class="row">
     <div class="container col-md-8 col-md-offset-2">
@@ -47,7 +49,14 @@
         </p>
     </div>
 </div>
+
+<div id="category-button">
+    <a href="/projects" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-folder-open"></span> Project Categories</a>
+</div>
+
+<div class="row spacer"></div>
 <hr />
+<div class="row spacer"></div>
 
 <div class="row">
     <form id="commentForm">
@@ -72,25 +81,29 @@
 </div>
 
 <div class="row spacer"></div>
-<div class="row spacer"></div>
+<hr />
 
 <div class="row">
     <div class="container col-md-4 col-md-offset-4">
-        <h3 class="text-success">Comments</h3>
+        <h6 id="comment-title">Comments</h6>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-11">
-            <div class="project-comment">
-                
+            <div class="project-comment">          
                 <ul class="comments" ng-repeat="comment in controller.project.comments">
                     <li class="clearfix">
                         <div class="post-comments">
                             <p class="meta">
                                 {{comment.time | date: "longDate"}}
-                                <i class="pull-right"><a href="#"><small>Reply</small></a></i>
+                                <i class="pull-right">
+                                    <a href="#">
+                                        <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+                                        <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+                                    </a>
+                                </i>
                             </p>
                             <p>
                                 {{comment.message}}

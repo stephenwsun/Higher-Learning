@@ -8,8 +8,8 @@ using HigherLearningApp.Data;
 namespace HigherLearningApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160611203255_Projects")]
-    partial class Projects
+    [Migration("20160614223639_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,10 @@ namespace HigherLearningApp.Migrations
                         .HasAnnotation("MaxLength", 256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 

@@ -44,16 +44,19 @@
                         </div>
                     </div>
                 </div>
-                <p class="post" ta-bind ng-model="project.body">
+                <p id="partial-post" class="post" ta-bind ng-model="project.body">
                     {{project.body}}
                 </p>
+                <div id="read-more" class="col-md-1 col-md-offset-2">
+                    <a href="/projects/details/{{project.id}}" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-pushpin"></span> Read More</a>
+                </div>
             </div>
             <div class="panel-footer">
                 <p class="alignLeft">
                     Date Created: {{project.time | date: "longDate"}} <br />
                     Category: {{project.category}}
                 <p class="alignRight">
-                    Views: <i class="fa fa-eye" fa-2x aria-hidden="true"></i>{{project.views}} <br />
+                    Views: <i class="fa fa-eye" fa-2x aria-hidden="true"></i> {{project.views}} <br />
                     <a href="/projects/edit/{{project.id}}">Edit</a> |
                     <a href="/projects/delete/{{project.id}}">Delete</a>
                 </p>

@@ -80,6 +80,7 @@ namespace HigherLearningApp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             //ProjectSampleData.Initialize(app.ApplicationServices);
+            
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -111,7 +112,7 @@ namespace HigherLearningApp
             });
 
            // initialize sample data
-           //SampleData.Initialize(app.ApplicationServices).Wait();
+           SampleData.Initialize(app.ApplicationServices).Wait();
 
         }
     }

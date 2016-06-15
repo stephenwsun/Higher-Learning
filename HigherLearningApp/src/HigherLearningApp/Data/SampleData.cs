@@ -15,19 +15,38 @@ namespace HigherLearningApp.Data
             var context = serviceProvider.GetService<ApplicationDbContext>();
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
 
-            // Ensure Stephen (IsAdmin)
-            var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
+            // Ensure db
+            context.Database.EnsureCreated();
+
+            //// Ensure Stephen (IsAdmin)
+            //var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
+            //if (stephen == null)
+            //{
+            //    // create user
+            //    stephen = new ApplicationUser
+            //    {
+            //        UserName = "Stephen.Walther@CoderCamps.com",
+            //        Email = "Stephen.Walther@CoderCamps.com"
+            //    };
+            //    await userManager.CreateAsync(stephen, "Secret123!");
+
+            //    // add claims
+            //    await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
+            //}
+
+            // Ensure Stephen Sun (IsAdmin)
+            var stephen = await userManager.FindByNameAsync("stephensun.me@gmail.com");
             if (stephen == null)
             {
-                // create user
                 stephen = new ApplicationUser
                 {
-                    UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    UserName = "stephensun.me@gmail.com",
+                    Email = "stephensun.me@gmail.com",
+                    FirstName = "Stephen",
+                    LastName = "Sun",
                 };
                 await userManager.CreateAsync(stephen, "Secret123!");
 
-                // add claims
                 await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
             }
 

@@ -68,7 +68,6 @@ namespace HigherLearningApp.Services
             {
                 var user = _repo.Query<ApplicationUser>().Where(u => u.Id == id).Include(u => u.Projects).FirstOrDefault();
                 user.Projects.Add(project);
-                //_repo.SaveChanges();
 
                 project.Active = true;
                 project.Votes = 0;

@@ -78,13 +78,13 @@ namespace HigherLearningApp {
 
             //-----------------------A Page for All Projects-------------------------//
             .state('adminEverything', {
-                url: '/adminEverything',
+                url: '/everything/admin',
                 templateUrl: '/ngApp/views/adminEverything.html',
                 controller: HigherLearningApp.Controllers.AdminEverythingController,
                 controllerAs: 'controller'
             })
             .state('userEverything', {
-                url: '/userEverything',
+                url: '/everything/user',
                 templateUrl: '/ngApp/views/userEverything.html',
                 controller: HigherLearningApp.Controllers.UserEverythingController,
                 controllerAs: 'controller'

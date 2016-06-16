@@ -81,9 +81,11 @@
                 <li>
                     <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
                     <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-                    <div ng-show="account.isLoggedIn()">
+                </li>
+                <li>
+                    <a href="/everything/user" ng-show="account.isLoggedIn()">
                         [{{account.getUserName()}}]
-                    </div>
+                    </a>
                 </li>
             </ul>
         </div>

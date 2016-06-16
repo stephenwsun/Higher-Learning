@@ -1,4 +1,4 @@
-<fieldset>
+<!--<fieldset>
     <legend>Login with a Social Provider</legend>
 
     <ul>
@@ -7,9 +7,9 @@
         </li>
     </ul>
 
-</fieldset>
+</fieldset>-->
 
-<fieldset>
+<!--<fieldset>
     <legend>Login Locally</legend>
     <ul>
         <li ng-repeat="error in controller.validationMessages">
@@ -29,4 +29,40 @@
         <input type="submit" value="Login" />
         <a href="/register">Register</a>
     </form>
-</fieldset>
+</fieldset>-->
+
+<div class="row navSpacer"></div>
+
+<ul>
+    <li ng-repeat="externalLogin in account.externalLogins">
+        <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
+    </li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form ng-submit="controller.login()" class="form-login">
+                <center>
+                    <h4 id="login">Welcome to Higher Learning</h4>
+                </center>
+                <input type="text" ng-model="controller.loginUser.email" id="userName" class="form-control input-sm chat-input" placeholder="Email" />
+                <br />
+                <input type="text" ng-model="controller.loginUser.password" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+                <br />
+                <div class="wrapper">
+                    <span class="group-btn">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <a href="/register" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-edit"></span>Register</a>
+                    </span>
+                </div>
+            </form>
+            <ul>
+                <li ng-repeat="error in controller.validationMessages">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

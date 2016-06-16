@@ -3,7 +3,15 @@
 
     export class PrintingController {
 
-        public message = 'Hello from the 3D Printing page!';
+        public projects;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
+            this.getProjects();
+        }
+
+        getProjects() {
+            this.projects = this.projectServices.getUserProjects();
+        }
     }
 
 

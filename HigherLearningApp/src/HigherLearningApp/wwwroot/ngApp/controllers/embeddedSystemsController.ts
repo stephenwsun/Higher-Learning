@@ -1,7 +1,16 @@
 ﻿namespace HigherLearningApp.Controllers {
 
     export class EmbeddedSystemsController {
-        public message = 'Hello from the Embedded Systems page!';
+
+        public projects;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
+            this.getProjects();
+        }
+
+        getProjects() {
+            this.projects = this.projectServices.getUserProjects();
+        }
 
     }
 

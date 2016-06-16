@@ -33,7 +33,7 @@
         constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
             this.getProjects();
         }
-
+        
         getProjects() {
             this.projects = this.projectServices.getActiveProjects();
         }
@@ -86,7 +86,7 @@
             this.$state.go('everything');
         }
 
-        // Filestack code
+        // Filepicker code
         public pickFile() {
             this.filepickerService.pick({
                 mimetype: 'image/*'
@@ -98,6 +98,8 @@
             console.log(this.file);
 
             // generally you want to put your code here that will send the url info to the database
+            var url = file.url;
+
 
 
             this.$scope.$apply();   //all this does is re-calls the controller (refresh)

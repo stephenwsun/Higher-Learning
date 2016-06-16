@@ -1,7 +1,16 @@
 ﻿namespace HigherLearningApp.Controllers {
 
     export class WebDevelopmentController {
-        public message = 'Hello from the Web Development page!';
+
+        public projects;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
+            this.getProjects();
+        }
+
+        getProjects() {
+            this.projects = this.projectServices.getUserProjects();
+        }
 
     }
 

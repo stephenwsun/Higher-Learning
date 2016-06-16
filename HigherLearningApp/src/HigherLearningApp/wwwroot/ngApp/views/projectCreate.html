@@ -12,7 +12,11 @@
 
 <button ng-click="controller.pickFile()">Upload</button>
 
+
 <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
+{{controller.file.url}}
+
+<a href="{{controller.file.url}}"></a>
 
 <hr />
 
@@ -25,8 +29,20 @@
     <div class="container col-md-12">
         <div text-angular ng-model="controller.project.body" placeholder="Write here..." ta-toolbar-class="btn-toolbar" ta-toolbar-group-class="btn-group" ta-toolbar-button-class="btn btn-primary" ta-toolbar-active-button-class="active"></div>
     </div>
-    <div class="container col-md-12">
+    <!--<div class="container col-md-12">
         <input type="text" ng-model="controller.project.category" placeholder="Category..."/>
+    </div>-->
+    <div class="container col-md-12">
+        <div class="form-group">
+            <label for="category">Select Category:</label>
+            <select ng-model="controller.project.category" class="form-control" id="sel1">
+                <option value="" disabled selected>Choose a Category</option>
+                <option>Web Development</option>
+                <option>Embedded Systems</option>
+                <option>Computers</option>
+                <option>3D Printing</option>
+            </select>
+        </div>
     </div>
 
     <div class="row spacer"></div>

@@ -67,7 +67,7 @@ namespace HigherLearningApp.API
         // POST api/values
         [HttpPost]
         [Authorize]
-        public IActionResult Post([FromBody]Project project, string id)
+        public IActionResult Post([FromBody]Project project)
         {
             if (!ModelState.IsValid)
             {
@@ -75,7 +75,8 @@ namespace HigherLearningApp.API
             }
             else
             {
-                _service.SaveProject(project, id);
+                var userId = _userManager.GetUserId(this.User);
+                _service.SaveProject(project, userId);
                 return Ok();
             }  
         }

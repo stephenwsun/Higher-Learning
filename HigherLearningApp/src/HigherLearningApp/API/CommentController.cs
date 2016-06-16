@@ -30,7 +30,6 @@ namespace HigherLearningApp.API
         [HttpGet]
         public IActionResult Get()
         {
-            //var userId = _userManager.GetUserId(this.User);
             return Ok();
         }
 

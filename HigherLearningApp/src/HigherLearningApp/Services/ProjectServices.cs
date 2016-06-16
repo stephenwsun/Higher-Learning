@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace HigherLearningApp.Services
 {
     public class ProjectServices :IProjectServices
@@ -65,6 +66,10 @@ namespace HigherLearningApp.Services
         {
             if (project.Id == 0)
             {
+                var user = _repo.Query<ApplicationUser>().Where(u => u.Id == id).Include(u => u.Projects).FirstOrDefault();
+                user.Projects.Add(project);
+                //_repo.SaveChanges();
+
                 project.Active = true;
                 project.Votes = 0;
                 project.Views = 0;

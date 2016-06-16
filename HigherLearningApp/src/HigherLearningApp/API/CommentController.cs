@@ -7,6 +7,8 @@ using HigherLearningApp.Data;
 using HigherLearningApp.Models;
 using Microsoft.EntityFrameworkCore;
 using HigherLearningApp.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,18 +17,21 @@ namespace HigherLearningApp.API
     [Route("api/[controller]")]
     public class CommentController : Controller
     {
-        private ICommentServices _repo;
+        private ICommentServices _service;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentController(ICommentServices repo)
+        public CommentController(ICommentServices service, UserManager<ApplicationUser> userManager)
         {
-            _repo = repo;
+            _service = service;
+            _userManager = userManager;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            //var userId = _userManager.GetUserId(this.User);
+            return Ok();
         }
 
         // GET api/values/5
@@ -38,6 +43,7 @@ namespace HigherLearningApp.API
 
         // POST api/values
         [HttpPost("{id}")]
+        [Authorize]
         public IActionResult Post(int id, [FromBody]Comment comment)
         {
             if (!ModelState.IsValid)
@@ -46,7 +52,10 @@ namespace HigherLearningApp.API
             }
             else
             {
-                _repo.SaveComment(id, comment);
+                var userId = _userManager.GetUserId(this.User);
+                comment.UserId = userId;
+
+                _service.SaveComment(id, comment);
                 return Ok();
             }
         }

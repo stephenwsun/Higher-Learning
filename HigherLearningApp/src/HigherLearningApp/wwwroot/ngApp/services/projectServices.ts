@@ -6,10 +6,26 @@
         private commentResource;
 
         constructor($resource: angular.resource.IResourceService) {
-            this.projectResource = $resource("/api/project/:id", null,
-                {
-                    vote: { method: "PUT" }
-                });
+            this.projectResource = $resource('/api/project/:id', null, {
+                vote: {
+                    method: 'PUT'
+                },
+                getAllProjects: {
+                    method: 'GET',
+                    url: '/api/project/getallprojects',
+                    isArray: true
+                },
+                getUserProjects: {
+                    method: 'GET',
+                    url: '/api/project/getuserprojects',
+                    isArray: true
+                },
+                getActiveProjects: {
+                    method: 'GET',
+                    url: '/api/project/getactiveprojects',
+                    isArray: true
+                }
+            });
             this.commentResource = $resource("/api/comment/:id");
         }
 
@@ -19,23 +35,25 @@
             return this.projectResource.vote({ id: projectId }, voteValue);
         }
 
-        // CRUD - Create
-
-        //createProject() {
-
-        //}
-
         // CRUD - Read
 
-        getProjects() {
-            return this.projectResource.query();
+        getAllProjects() {
+            return this.projectResource.getAllProjects();
+        }
+
+        getUserProjects() {
+            return this.projectResource.getUserProjects();
+        }
+
+        getActiveProjects() {
+            return this.projectResource.getActiveProjects();
         }
 
         getProject(projectId) {
             return this.projectResource.get({ id: projectId });
         }
 
-        // CRUD - Update
+        // CRUD - Update (includes Create)
 
         saveProject(project) {
             return this.projectResource.save(project).$promise;

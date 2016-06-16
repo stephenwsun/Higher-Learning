@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using HigherLearningApp.Data;
 using HigherLearningApp.Models;
 using HigherLearningApp.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,32 +17,57 @@ namespace HigherLearningApp.API
     [Route("api/[controller]")]
     public class ProjectController : Controller
     {
-        private IProjectServices _repo;
+        private IProjectServices _service;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProjectController(IProjectServices repo)
+        public ProjectController(IProjectServices service, UserManager<ApplicationUser> userManager)
         {
-            _repo = repo;
+            _service = service;
+            _userManager = userManager;
         }
 
-        // GET: api/values
+        // GET: api/project/getallprojects
         [HttpGet]
-        public IActionResult Get()
+        [Route("getallprojects")]
+        [Authorize(Policy = "AdminOnly")]
+        public IActionResult GetAllProjects()
         {
-            var projects = _repo.GetProjects();
+            var projects = _service.GetAllProjects();
             return Ok(projects);
         }
+
+        // GET: api/project/getuserprojects
+        [HttpGet]
+        [Route("getuserprojects")]
+        [Authorize]
+        public IActionResult GetUserProjects()
+        {
+            var userId = _userManager.GetUserId(this.User);
+            var projects = _service.GetUserProjects(userId);
+            return Ok(projects);
+        }
+
+        // GET: api/project/getactiveprojects
+        [HttpGet]
+        [Route("getactiveprojects")]
+        public IActionResult GetActiveProjects()
+        {
+            var projects = _service.GetActiveProjects();
+            return Ok(projects);
+        }       
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var project = _repo.GetProject(id);
+            var project = _service.GetProject(id);
             return Ok(project);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]Project project)
+        [Authorize]
+        public IActionResult Post([FromBody]Project project, string id)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +75,7 @@ namespace HigherLearningApp.API
             }
             else
             {
-                _repo.SaveProject(project);
+                _service.SaveProject(project, id);
                 return Ok();
             }  
         }
@@ -61,6 +88,7 @@ namespace HigherLearningApp.API
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -69,7 +97,7 @@ namespace HigherLearningApp.API
             }
             else
             {
-                _repo.DeleteProject(id);
+                _service.DeleteProject(id);
                 return Ok();
             }           
         }

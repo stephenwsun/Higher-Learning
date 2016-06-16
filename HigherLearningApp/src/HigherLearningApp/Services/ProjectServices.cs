@@ -17,11 +17,42 @@ namespace HigherLearningApp.Services
             _repo = repo;
         }
 
-        public List<Project> GetProjects()
+        /// <summary>
+        /// For admin use
+        /// Returns all projects (active and inactive)
+        /// </summary>
+        /// <returns></returns>
+        public List<Project> GetAllProjects()
         {
             var projects = _repo.Query<Project>().ToList();
             return projects;
         }
+
+        /// <summary>
+        /// Returns all active projects associated with logged in user (requires login)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Project> GetUserProjects(string id)
+        {
+            var user = _repo.Query<ApplicationUser>().Where(u => u.Id == id).Include(u => u.Projects).FirstOrDefault();
+            user.Projects = user.Projects.Where(p => p.Active == true).ToList();
+
+            var projects = user.Projects.ToList();
+            return projects;
+        }
+
+        /// <summary>
+        /// For all users (does not require login)
+        /// Returns all active projects
+        /// </summary>
+        /// <returns></returns>
+        public List<Project> GetActiveProjects()
+        {
+            var projects = _repo.Query<Project>().Where(p => p.Active == true).ToList();
+            return projects;
+        }
+
 
         public Project GetProject(int id)
         {
@@ -30,11 +61,14 @@ namespace HigherLearningApp.Services
             return project;
         }
 
-        public void SaveProject(Project project)
+        public void SaveProject(Project project, string id)
         {
-            if(project.Id == 0)
+            if (project.Id == 0)
             {
-                project.Time = DateTime.UtcNow;
+                project.Active = true;
+                project.Votes = 0;
+                project.Views = 0;
+                project.Time = DateTime.UtcNow;     
                 _repo.Add(project);
             }
             else
@@ -53,7 +87,8 @@ namespace HigherLearningApp.Services
         public void DeleteProject(int id)
         {
             var projectDelete = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
-            _repo.Delete(projectDelete);
+            projectDelete.Active = false;
+            _repo.SaveChanges();
         }
     }
 }

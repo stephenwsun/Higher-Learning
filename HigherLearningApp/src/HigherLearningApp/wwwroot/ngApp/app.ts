@@ -77,6 +77,18 @@ namespace HigherLearningApp {
             //-----------------------------------------------------------------------//
 
             //-----------------------A Page for All Projects-------------------------//
+            .state('adminEverything', {
+                url: '/adminEverything',
+                templateUrl: '/ngApp/views/adminEverything.html',
+                controller: HigherLearningApp.Controllers.AdminEverythingController,
+                controllerAs: 'controller'
+            })
+            .state('userEverything', {
+                url: '/userEverything',
+                templateUrl: '/ngApp/views/userEverything.html',
+                controller: HigherLearningApp.Controllers.UserEverythingController,
+                controllerAs: 'controller'
+            })
             .state('everything', {
                 url: '/everything',
                 templateUrl: '/ngApp/views/everything.html',

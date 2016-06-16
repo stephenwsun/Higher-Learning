@@ -11,7 +11,6 @@ namespace HigherLearningApp.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public ICollection<Project> Projects { get; set; }
-        //public ICollection<Comment> Comments { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

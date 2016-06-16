@@ -1,7 +1,6 @@
 ﻿namespace HigherLearningApp.Controllers {
 
-    export class EverythingController {
-        //public message = 'Hello from the Projects page!';
+    export class AdminEverythingController {
 
         public projects;
 
@@ -10,7 +9,33 @@
         }
 
         getProjects() {
-            this.projects = this.projectServices.getProjects();
+            this.projects = this.projectServices.getAllProjects();
+        }
+    }
+
+    export class UserEverythingController {
+
+        public projects;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
+            this.getProjects();
+        }
+
+        getProjects() {
+            this.projects = this.projectServices.getUserProjects();
+        }
+    }
+
+    export class EverythingController {
+
+        public projects;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices) {
+            this.getProjects();
+        }
+
+        getProjects() {
+            this.projects = this.projectServices.getActiveProjects();
         }
     }
 

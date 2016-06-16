@@ -73,17 +73,23 @@ namespace HigherLearningApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Active");
+
                     b.Property<string>("Message");
 
                     b.Property<int?>("ProjectId");
 
                     b.Property<DateTime>("Time");
 
+                    b.Property<string>("UserId");
+
                     b.Property<int>("Votes");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -92,6 +98,10 @@ namespace HigherLearningApp.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Active");
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<string>("Body");
 
@@ -106,6 +116,8 @@ namespace HigherLearningApp.Migrations
                     b.Property<int>("Votes");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Projects");
                 });
@@ -222,6 +234,17 @@ namespace HigherLearningApp.Migrations
                     b.HasOne("HigherLearningApp.Models.Project")
                         .WithMany()
                         .HasForeignKey("ProjectId");
+
+                    b.HasOne("HigherLearningApp.Models.ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("HigherLearningApp.Models.Project", b =>
+                {
+                    b.HasOne("HigherLearningApp.Models.ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

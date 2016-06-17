@@ -96,7 +96,12 @@ namespace HigherLearningApp {
                 controllerAs: 'controller'
             })
             //-----------------------------------------------------------------------//
-
+            .state('featured', {
+                url: '/featured',
+                templateUrl: '/ngApp/views/featured.html',
+                controller: HigherLearningApp.Controllers.FeaturedController,
+                controllerAs: 'controller'
+            })
             .state('3dprinting', {
                 url: '/3DPrinting',
                 templateUrl: '/ngApp/views/3DPrinting.html',

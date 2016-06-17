@@ -22,7 +22,7 @@
 
 <form ng-submit="controller.saveProject()">
     <div class="container col-md-12">
-        <input type="text" id="title" ng-model="controller.project.title" placeholder="Enter a post title..."/>
+        <input type="text" id="title" ng-model="controller.project.title" placeholder="Enter a post title..." required/>
     </div>
     <div class="row spacer"></div>
     <div class="row spacer"></div>
@@ -35,7 +35,7 @@
     <div class="container col-md-12">
         <div class="form-group">
             <label for="category">Select Category:</label>
-            <select ng-model="controller.project.category" class="form-control" id="sel1">
+            <select ng-model="controller.project.category" class="form-control" id="sel1" required>
                 <option value="" disabled selected>Choose a Category</option>
                 <option>Web Development</option>
                 <option>Embedded Systems</option>
@@ -49,11 +49,15 @@
     <div class="row spacer"></div>
 
     <div class="container col-md-12">
-        <input type="submit" value="Create Project" />
-        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+        <!--<input type="submit" value="Create Project" />
+        <input type="button" ng-click="controller.cancel()" value="Cancel" />-->
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create Project">
+        <input type="button" class="btn btn-danger btn-lg btn-block" ng-click="controller.cancel() "value="Cancel">
     </div>
 </form>
 
+<div class="row spacer"></div>
+<div class="row spacer"></div>
 <div class="row spacer"></div>
 
 

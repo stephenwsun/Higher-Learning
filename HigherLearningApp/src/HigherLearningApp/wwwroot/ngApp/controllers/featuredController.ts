@@ -1,6 +1,7 @@
 ﻿namespace HigherLearningApp.Controllers {
 
-    export class ComputersController {
+
+    export class FeaturedController {
 
         public projects;
 
@@ -12,4 +13,8 @@
             this.projects = this.projectServices.getUserProjects();
         }
     }
+
+
+
+
 }

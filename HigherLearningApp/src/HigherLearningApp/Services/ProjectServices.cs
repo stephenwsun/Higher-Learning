@@ -59,6 +59,7 @@ namespace HigherLearningApp.Services
         {
             var project = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
             project.Views++;
+            _repo.SaveChanges();
             return project;
         }
 

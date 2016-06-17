@@ -33,25 +33,9 @@
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
     <base href="/" />
 </head>
+
 <body ng-controller="AccountController as account" ng-cloak>
     <div class="container-fluid">
-        @*<h1>HigherLearningApp</h1>
-        <div>
-            <a href="/">Home</a> /
-            <a href="/projects">Projects</a> /
-            <a href="/learn">Learn</a> /
-            <a href="/about">About</a> /
-            <a href="/contact">Contact</a>
-
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
-        </div>
-        <hr />*@
-
         <ui-view></ui-view>
     </div>
 
@@ -88,7 +72,7 @@
                     <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="/secret">Secret</a>
+                    <a href="/everything/admin">Admin</a>
                 </li>
                 <li>
                     <a href="/login" ng-show="!account.isLoggedIn()">Login</a>

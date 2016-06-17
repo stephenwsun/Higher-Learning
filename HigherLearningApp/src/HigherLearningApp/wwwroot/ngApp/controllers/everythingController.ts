@@ -77,6 +77,7 @@
         }
 
         saveProject() {
+            //var url = this.file.url;
             this.projectServices.saveProject(this.project).then(() => {
                 this.$state.go('everything');
             });
@@ -98,9 +99,8 @@
             console.log(this.file);
 
             // generally you want to put your code here that will send the url info to the database
-            var url = file.url;
-
-
+            //var url = file.url;
+            
 
             this.$scope.$apply();   //all this does is re-calls the controller (refresh)
         }

@@ -53,7 +53,7 @@
             return this.projectResource.get({ id: projectId });
         }
 
-        // CRUD - Update (includes Create)
+        // CRUD - Create/Update
 
         saveProject(project) {
             return this.projectResource.save(project).$promise;

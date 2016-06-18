@@ -1,27 +1,4 @@
-﻿<!--<a href="/everything">Back to questions</a>
-
-<h1>Project: {{controller.project.title}}</h1>
-<hr />
-<h3>{{controller.project.body}}</h3>
-
-
-<ul>
-    <li ng-repeat="comment in controller.project.comments">{{comment.message}} {{comment.time | date: "longDate"}}</li>
-</ul>
-
-<form id="commentForm" ng-submit="controller.saveComment()">
-    <div>
-        <input ng-model="controller.comment.message" />
-        <input type="submit" value="Save" />
-        <input type="button" ng-click="controller.cancel()" value="Cancel" />
-    </div>
-    <div>
-        <input type="button" value="Thumbs Up" />
-        <input type="button" value="Thumbs Down" />
-
-    </div>
-</form>-->
-
+﻿
 <div class="row navSpacer"></div>
 
 <div class="container">
@@ -38,6 +15,21 @@
             {{controller.project.time | date: "longDate"}}
         </div>
     </div>
+</div>
+
+<div class="row spacer"></div>
+
+<div class="row col-md-4 col-md-offset-5">
+    <ul class="share-buttons">
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="../../images/Social Icons/Facebook.jpg"></a></li>
+        <li><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img src="../../images/Social Icons/Twitter.jpg"></a></li>
+        <li><a href="https://plus.google.com/share?url=" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="../../images/Social Icons/Google Plus.jpg"></a></li>
+        <li><a href="http://www.tumblr.com/share?v=3&u=&t=&s=" target="_blank" title="Post to Tumblr" onclick="window.open('http://www.tumblr.com/share?v=3&u=' + encodeURIComponent(document.URL) + '&t=' +  encodeURIComponent(document.title)); return false;"><img src="../../images/Social Icons/Tumblr.jpg"></a></li>
+        <li><a href="http://pinterest.com/pin/create/button/?url=&description=" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><img src="../../images/Social Icons/Pinterest.jpg"></a></li>
+        <li><a href="http://www.reddit.com/submit?url=&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="../../images/Social Icons/Reddit.jpg"></a></li>
+        <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="../../images/Social Icons/Linkedin.jpg"></a></li>
+        <li><a href="mailto:?subject=&body=:%20" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img src="../../images/Social Icons/Email.jpg"></a></li>
+    </ul>
 </div>
 
 <div class="row spacer"></div>
@@ -68,7 +60,8 @@
         <li class="divider"></li>
         <li><a href="/projects">Project Categories</a></li>
     </ul>
-</div>
+</div>    
+
 
 <div class="row spacer"></div>
 <hr />

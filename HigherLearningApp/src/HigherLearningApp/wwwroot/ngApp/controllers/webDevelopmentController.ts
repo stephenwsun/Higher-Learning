@@ -9,7 +9,7 @@
         }
 
         getProjects() {
-            this.projects = this.projectServices.getUserProjects();
+            this.projects = this.projectServices.getActiveProjects();
         }
 
     }

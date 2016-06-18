@@ -94,6 +94,26 @@ namespace HigherLearningApp.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("HigherLearningApp.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ProjectId");
+
+                    b.Property<string>("Url");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("HigherLearningApp.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -230,6 +250,17 @@ namespace HigherLearningApp.Migrations
                 });
 
             modelBuilder.Entity("HigherLearningApp.Models.Comment", b =>
+                {
+                    b.HasOne("HigherLearningApp.Models.Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId");
+
+                    b.HasOne("HigherLearningApp.Models.ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("HigherLearningApp.Models.Image", b =>
                 {
                     b.HasOne("HigherLearningApp.Models.Project")
                         .WithMany()

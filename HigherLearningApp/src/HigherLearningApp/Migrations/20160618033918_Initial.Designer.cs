@@ -8,7 +8,7 @@ using HigherLearningApp.Data;
 namespace HigherLearningApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160616012214_Initial")]
+    [Migration("20160618033918_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,6 +93,26 @@ namespace HigherLearningApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("HigherLearningApp.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ProjectId");
+
+                    b.Property<string>("Url");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("HigherLearningApp.Models.Project", b =>
@@ -231,6 +251,17 @@ namespace HigherLearningApp.Migrations
                 });
 
             modelBuilder.Entity("HigherLearningApp.Models.Comment", b =>
+                {
+                    b.HasOne("HigherLearningApp.Models.Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId");
+
+                    b.HasOne("HigherLearningApp.Models.ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("HigherLearningApp.Models.Image", b =>
                 {
                     b.HasOne("HigherLearningApp.Models.Project")
                         .WithMany()

@@ -44,6 +44,7 @@
         public projectId;
         public project;
         public comment;
+        public image;
 
         constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService) {
             this.projectId = $stateParams['id'];
@@ -62,6 +63,14 @@
             });
         }
 
+        //saveImage() {
+        //    this.projectServices.saveImage(this.projectId, this.image).then(() => {
+        //        this.getProject();
+        //        let element: any = document.getElementById("image");
+        //        element.reset();
+        //    });
+        //}
+
         cancel() {
             this.$state.go('everything');
         }
@@ -77,7 +86,6 @@
         }
 
         saveProject() {
-            //var url = this.file.url;
             this.projectServices.saveProject(this.project).then(() => {
                 this.$state.go('everything');
             });

@@ -10,17 +10,20 @@
 
 <hr />
 
-<button ng-click="controller.pickFile()">Upload</button>
+<!--<button ng-click="controller.pickFile()">Upload</button>
 
 
 <img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
 {{controller.file.url}}
 
-<a href="{{controller.file.url}}"></a>
+<a href="{{controller.file.url}}"></a>-->
 
 <hr />
 
 <form ng-submit="controller.saveProject()">
+
+    <button ng-click="controller.pickFile()">Upload</button>
+
     <div class="container col-md-12">
         <input type="text" id="title" ng-model="controller.project.title" placeholder="Enter a post title..." required/>
     </div>

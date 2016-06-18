@@ -35,6 +35,16 @@
 <div class="row spacer"></div>
 
 <div class="row">
+    <div ng-repeat="image in controller.project.images">
+        <img ng-src="{{image.url}}" alt="" />
+    </div>
+</div>
+
+<!--<div ng-repeat="image in controller.project.images">
+    <img ng-src="{{image.url}}" />
+</div>-->
+
+<div class="row">
     <div class="container col-md-8 col-md-offset-2">
         <p class="post" ta-bind ng-model="controller.project.body">
             {{controller.project.body}}

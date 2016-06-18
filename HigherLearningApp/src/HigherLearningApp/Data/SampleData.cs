@@ -73,7 +73,22 @@ namespace HigherLearningApp.Data
                                     Votes = 0,
                                     Time = DateTime.UtcNow
                                 }
-                            }
+                            },
+                            Images = new List<Image>
+                            {
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768"
+                                }
+                            },
 
                         },
                         new Project
@@ -101,7 +116,22 @@ namespace HigherLearningApp.Data
                                     Votes = 0,
                                     Time = DateTime.UtcNow
                                 }
-                            }
+                            },
+                            Images = new List<Image>
+                            {
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768"
+                                }
+                            },
                         },
                         new Project
                         {
@@ -128,7 +158,22 @@ namespace HigherLearningApp.Data
                                     Votes = 0,
                                     Time = DateTime.UtcNow
                                 }
-                            }
+                            },
+                            Images = new List<Image>
+                            {
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768"
+                                }
+                            },
                         },
                         new Project
                         {
@@ -155,7 +200,22 @@ namespace HigherLearningApp.Data
                                     Votes = 0,
                                     Time = DateTime.UtcNow
                                 }
-                            }
+                            },
+                            Images = new List<Image>
+                            {
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+                                },
+                                new Image
+                                {
+                                    Url = "http://img.lum.dolimg.com/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768"
+                                }
+                            },
                         },
                     }
                 };

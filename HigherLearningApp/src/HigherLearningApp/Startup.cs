@@ -45,6 +45,7 @@ namespace HigherLearningApp
             services.AddScoped<IGenericRepository, GenericRepository>();
             services.AddScoped<IProjectServices, ProjectServices>();
             services.AddScoped<ICommentServices, CommentServices>();
+            services.AddScoped<IImageServices, ImageServices>();
 
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>

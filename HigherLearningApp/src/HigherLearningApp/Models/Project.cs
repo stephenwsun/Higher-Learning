@@ -18,5 +18,6 @@ namespace HigherLearningApp.Models
         public int Views { get; set; }
         public DateTime Time { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<Image> Images { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace HigherLearningApp.Data
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

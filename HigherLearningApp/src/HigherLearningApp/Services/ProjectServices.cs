@@ -57,7 +57,7 @@ namespace HigherLearningApp.Services
 
         public Project GetProject(int id)
         {
-            var project = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
+            var project = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).Include(p => p.Images).FirstOrDefault();
             project.Views++;
             _repo.SaveChanges();
             return project;
@@ -91,7 +91,7 @@ namespace HigherLearningApp.Services
 
         public void DeleteProject(int id)
         {
-            var projectDelete = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).FirstOrDefault();
+            var projectDelete = _repo.Query<Project>().Where(p => p.Id == id).Include(p => p.Comments).Include(p => p.Images).FirstOrDefault();
             projectDelete.Active = false;
             _repo.SaveChanges();
         }

@@ -4,6 +4,7 @@
 
         private projectResource;
         private commentResource;
+        private imageResource;
 
         constructor($resource: angular.resource.IResourceService) {
             this.projectResource = $resource('/api/project/:id', null, {
@@ -27,6 +28,7 @@
                 }
             });
             this.commentResource = $resource("/api/comment/:id");
+            this.imageResource = $resource("/api/iamge/:id");
         }
 
         // Vote Functionality
@@ -62,6 +64,10 @@
         saveComment(projectId, comment) {
             return this.commentResource.save({ id: projectId }, comment).$promise;
         }
+
+        //saveImage(projectId, image) {
+        //    return this.imageResource.save({ id: projectId }, image).$promise;
+        //}
 
         // CRUD - Delete
 

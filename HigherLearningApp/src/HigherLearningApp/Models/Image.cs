@@ -9,12 +9,7 @@ namespace HigherLearningApp.Models
 {
     public class Image
     {
-        [Key]
         public int Id { get; set; }
         public string Url { get; set; }
-        public string UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
     }
 }

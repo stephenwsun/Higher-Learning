@@ -44,9 +44,10 @@
         public projectId;
         public project;
         public comment;
-        public image;
+        public file;
+        
 
-        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService) {
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService, private filepickerService: any, private $scope: ng.IScope) {
             this.projectId = $stateParams['id'];
             this.getProject();
         }
@@ -63,36 +64,12 @@
             });
         }
 
-        //saveImage() {
-        //    this.projectServices.saveImage(this.projectId, this.image).then(() => {
-        //        this.getProject();
-        //        let element: any = document.getElementById("image");
-        //        element.reset();
-        //    });
-        //}
-
-        cancel() {
-            this.$state.go('everything');
-        }
-    }
-
-    export class ProjectCreateController {
-
-        public project;
-        public file;
-
-        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, private filepickerService: any, private $scope: ng.IScope) {
-
-        }
-
-        saveProject() {
-            this.projectServices.saveProject(this.project).then(() => {
-                this.$state.go('everything');
+        saveImage() {
+            //var url = this.file.url;
+            this.projectServices.saveImage(this.projectId, this.file).then(() => {
+                let element: any = document.getElementById("image");
+                element.reset();
             });
-        }
-
-        cancel() {
-            this.$state.go('everything');
         }
 
         // Filepicker code
@@ -105,13 +82,56 @@
         public fileUploaded(file) {
             this.file = file;
             console.log(this.file);
-
-            // generally you want to put your code here that will send the url info to the database
-            //var url = file.url;
+            console.log(this.projectId);
+            console.log(this.file.url);
+            //var url = this.file.url;
             
+
+            if (this.file.url != null) {
+                // generally you want to put your code here that will send the url info to the database
+                this.projectServices.saveImage(this.projectId, this.file).then(() => {
+                    this.getProject();
+                    let element: any = document.getElementById("image");
+                    element.reset();
+                });
+                console.log("url sent");
+            }
+            else {
+                console.log("nothing to send");
+            }
 
             this.$scope.$apply();   //all this does is re-calls the controller (refresh)
         }
+
+        cancel() {
+            this.$state.go('everything');
+        }
+    }
+
+    export class ProjectCreateController {
+
+        public projectId;
+        public project;
+        
+        public image;
+
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService) {
+
+        }
+
+        saveProject() {
+            this.projectServices.saveProject(this.project).then(() => {
+                this.$state.go('everything');
+            });
+        }
+
+        
+
+        cancel() {
+            this.$state.go('everything');
+        }
+
+        
 
     }
 

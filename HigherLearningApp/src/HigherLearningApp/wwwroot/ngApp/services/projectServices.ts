@@ -28,7 +28,7 @@
                 }
             });
             this.commentResource = $resource("/api/comment/:id");
-            this.imageResource = $resource("/api/iamge/:id");
+            this.imageResource = $resource("/api/image/:id");
         }
 
         // Vote Functionality
@@ -65,9 +65,9 @@
             return this.commentResource.save({ id: projectId }, comment).$promise;
         }
 
-        //saveImage(projectId, image) {
-        //    return this.imageResource.save({ id: projectId }, image).$promise;
-        //}
+        saveImage(projectId, image) {
+            return this.imageResource.save({ id: projectId }, image).$promise;
+        }
 
         // CRUD - Delete
 

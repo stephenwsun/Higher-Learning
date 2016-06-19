@@ -34,15 +34,21 @@
 
 <div class="row spacer"></div>
 
+<hr />
+<button ng-click="controller.pickFile()">Upload</button>
+<img ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}" />
+{{controller.file.url}}
+<hr />
+
 <div class="row">
-    <div ng-repeat="image in controller.project.images">
-        <img ng-src="{{image.url}}" alt="" />
+    <div>
+        <ul id="project-pics" align="middle">
+            <li ng-repeat="image in controller.project.images">
+                <img class="img-thumbnail" id="pic" ng-src="{{image.url}}" alt="" />
+            </li>
+        </ul>        
     </div>
 </div>
-
-<!--<div ng-repeat="image in controller.project.images">
-    <img ng-src="{{image.url}}" />
-</div>-->
 
 <div class="row">
     <div class="container col-md-8 col-md-offset-2">

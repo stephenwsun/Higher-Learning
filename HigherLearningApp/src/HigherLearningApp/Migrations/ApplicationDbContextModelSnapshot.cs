@@ -103,13 +103,9 @@ namespace HigherLearningApp.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Images");
                 });
@@ -265,10 +261,6 @@ namespace HigherLearningApp.Migrations
                     b.HasOne("HigherLearningApp.Models.Project")
                         .WithMany()
                         .HasForeignKey("ProjectId");
-
-                    b.HasOne("HigherLearningApp.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("HigherLearningApp.Models.Project", b =>

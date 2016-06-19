@@ -51,8 +51,8 @@ namespace HigherLearningApp.API
             }
             else
             {
-                var userId = _userManager.GetUserId(this.User);
-                image.UserId = userId;
+                //var userId = _userManager.GetUserId(this.User);
+                //image.UserId = userId;
 
                 _service.SaveImage(id, image);
                 return Ok();

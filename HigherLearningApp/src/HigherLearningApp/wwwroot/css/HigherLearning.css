@@ -259,16 +259,27 @@ p.copyright {
 /************************************************************** "projectDetails.html" *****************************************************************************/
 
 ul.share-buttons{
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 ul.share-buttons li{
-  display: inline;
+    display: inline;
 }
 
 ul.share-buttons img{
-  width: 32px;
+    width: 32px;
+}
+
+#project-pics li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+#pic{
+    height:300px;
+    width: 400px;
 }
 
 #commentBox{

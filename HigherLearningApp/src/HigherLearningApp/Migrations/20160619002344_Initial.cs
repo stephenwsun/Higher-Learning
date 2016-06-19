@@ -213,8 +213,7 @@ namespace HigherLearningApp.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProjectId = table.Column<int>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -223,12 +222,6 @@ namespace HigherLearningApp.Migrations
                         name: "FK_Images_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Images_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -257,11 +250,6 @@ namespace HigherLearningApp.Migrations
                 name: "IX_Images_ProjectId",
                 table: "Images",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_UserId",
-                table: "Images",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ApplicationUserId",

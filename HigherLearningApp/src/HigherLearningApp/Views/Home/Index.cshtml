@@ -66,7 +66,7 @@
                     <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="/everything/admin">Admin</a>
+                    <a href="/everything/admin" ng-show="account.userClaim.isAdmin == 'true'">Admin</a>
                 </li>
                 <li>
                     <a href="/login" ng-show="!account.isLoggedIn()">Login</a>

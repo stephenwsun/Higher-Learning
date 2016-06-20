@@ -2,6 +2,7 @@ namespace HigherLearningApp.Controllers {
 
     export class AccountController {
         public externalLogins;
+        public userClaim;
 
         public getUserName() {
             return this.accountService.getUserName();
@@ -17,6 +18,7 @@ namespace HigherLearningApp.Controllers {
 
         public logout() {
             this.accountService.logout();
+            this.userClaim = null;
             this.$location.path('/');
         }
 
@@ -28,6 +30,9 @@ namespace HigherLearningApp.Controllers {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
+
+            this.userClaim = accountService.getUserInfo();
+            console.log(this.userClaim);
         }
     }
 

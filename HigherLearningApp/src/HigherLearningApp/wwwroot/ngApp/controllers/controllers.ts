@@ -1,7 +1,7 @@
 namespace HigherLearningApp.Controllers {
 
     export class HomeController {
-        public message = 'Hello from the Home page!';
+        
     }
 
 
@@ -17,7 +17,7 @@ namespace HigherLearningApp.Controllers {
 
 
     export class AboutController {
-        public message = 'Hello from the About page!';
+        
     }
 
 }

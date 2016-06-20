@@ -66,6 +66,7 @@
         }
 
         saveImage(projectId, image) {
+            image.Id = 0;
             return this.imageResource.save({ id: projectId }, image).$promise;
         }
 

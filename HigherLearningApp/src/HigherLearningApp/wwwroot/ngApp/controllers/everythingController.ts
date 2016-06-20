@@ -91,8 +91,8 @@
                 // generally you want to put your code here that will send the url info to the database
                 this.projectServices.saveImage(this.projectId, this.file).then(() => {
                     this.getProject();
-                    let element: any = document.getElementById("image");
-                    element.reset();
+                    //let element: any = document.getElementById("image");
+                    //element.reset();
                 });
                 console.log("url sent");
             }

@@ -11,6 +11,12 @@ namespace HigherLearningApp.Services {
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
         }
 
+        public getUserInfo() {
+            var userInfo = this.$window.sessionStorage.getItem('claims');
+            console.log(userInfo);
+            return JSON.parse(userInfo);
+        }
+
         public getUserName() {
             return this.$window.sessionStorage.getItem('userName');
         }

@@ -74,6 +74,12 @@ namespace HigherLearningApp {
                 controller: HigherLearningApp.Controllers.ProjectEditController,
                 controllerAs: 'controller'
             })
+            .state('projectImages', {
+                url: '/project/images/:id',
+                templateUrl: '/ngApp/views/projectImages.html',
+                controller: HigherLearningApp.Controllers.ProjectCreateController,
+                controllerAs: 'controller'
+            })
             //-----------------------------------------------------------------------//
 
             //-----------------------A Page for All Projects-------------------------//

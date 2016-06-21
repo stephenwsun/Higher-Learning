@@ -77,7 +77,7 @@ namespace HigherLearningApp.API
             {
                 var userId = _userManager.GetUserId(this.User);
                 _service.SaveProject(project, userId);
-                return Ok();
+                return Ok(project);
             }  
         }
 

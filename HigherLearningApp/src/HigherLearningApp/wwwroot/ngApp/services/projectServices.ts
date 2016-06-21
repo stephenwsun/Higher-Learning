@@ -66,8 +66,11 @@
         }
 
         saveImage(projectId, image) {
-            image.Id = 0;
             return this.imageResource.save({ id: projectId }, image).$promise;
+        }
+
+        createImage(image) {
+            return this.imageResource.save(image).$promise;
         }
 
         // CRUD - Delete

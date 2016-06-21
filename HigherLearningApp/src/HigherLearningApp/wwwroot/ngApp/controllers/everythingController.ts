@@ -65,7 +65,6 @@
         }
 
         saveImage() {
-            //var url = this.file.url;
             this.projectServices.saveImage(this.projectId, this.file).then(() => {
                 let element: any = document.getElementById("image");
                 element.reset();
@@ -83,9 +82,7 @@
             this.file = file;
             console.log(this.file);
             console.log(this.projectId);
-            console.log(this.file.url);
-            //var url = this.file.url;
-            
+            console.log(this.file.url);        
 
             if (this.file.url != null) {
                 // generally you want to put your code here that will send the url info to the database
@@ -112,20 +109,39 @@
 
         public projectId;
         public project;
-        
-        public image;
+        public file;
+        public imageId;
 
-        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService) {
-
+        constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService, private filepickerService: any, private $scope: ng.IScope) {
+            if ($stateParams) {
+                this.projectId = $stateParams['id'];
+            }
         }
 
         saveProject() {
-            this.projectServices.saveProject(this.project).then(() => {
-                this.$state.go('everything');
+            this.projectServices.saveProject(this.project).then((data) => {
+                console.log(data);
+                console.log(data.id);
+                this.projectId = data.id;
+                this.$state.go('projectImages', { id: this.projectId });
             });
         }
 
-        
+        // Filepicker code
+        public pickFile() {
+            this.filepickerService.pick({
+                mimetype: 'image/*'
+            }, this.fileUploaded.bind(this));
+        }
+
+        public fileUploaded(file) {
+            this.file = file;
+            console.log(this.file);
+            console.log(this.projectId);
+            this.projectServices.saveImage(this.projectId, this.file);
+
+            this.$scope.$apply();
+        }
 
         cancel() {
             this.$state.go('everything');

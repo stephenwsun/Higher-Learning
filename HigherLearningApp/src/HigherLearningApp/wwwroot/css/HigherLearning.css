@@ -235,6 +235,11 @@ p.copyright {
     text-align: right;
 }
 
+#project-images{
+    height: 300px;
+    width: 400px;
+}
+
 #partial-post{
     overflow: hidden;
     text-overflow: ellipsis;

@@ -35,7 +35,10 @@
         }
         
         getProjects() {
-            this.projects = this.projectServices.getActiveProjects();
+            this.projectServices.getActiveProjects().then((data) => {
+                console.log(data);
+                this.projects = data;
+            });
         }
     }
 
@@ -46,7 +49,6 @@
         public comment;
         public file;
         
-
         constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService, private filepickerService: any, private $scope: ng.IScope) {
             this.projectId = $stateParams['id'];
             this.getProject();
@@ -110,7 +112,6 @@
         public projectId;
         public project;
         public file;
-        public imageId;
 
         constructor(private projectServices: HigherLearningApp.Services.ProjectServices, private $state: angular.ui.IStateService, $stateParams: angular.ui.IStateParamsService, private filepickerService: any, private $scope: ng.IScope) {
             if ($stateParams) {

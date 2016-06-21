@@ -10,7 +10,10 @@
         }
 
         getProjects() {
-            this.projects = this.projectServices.getActiveProjects();
+            this.projects = this.projectServices.getActiveProjects().then((data) => {
+                console.log(data);
+                this.projects = data;
+            });
         }
     }
 

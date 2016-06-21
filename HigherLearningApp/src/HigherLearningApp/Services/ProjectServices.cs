@@ -50,7 +50,7 @@ namespace HigherLearningApp.Services
         /// <returns></returns>
         public List<Project> GetActiveProjects()
         {
-            var projects = _repo.Query<Project>().Where(p => p.Active == true).ToList();
+            var projects = _repo.Query<Project>().Where(p => p.Active == true).Include(p => p.Images).ToList();
             return projects;
         }
 

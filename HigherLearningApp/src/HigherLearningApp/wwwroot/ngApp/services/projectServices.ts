@@ -40,7 +40,7 @@
         // CRUD - Read
 
         getAllProjects() {
-            return this.projectResource.getAllProjects();
+            return this.projectResource.getAllProjects()
         }
 
         getUserProjects() {
@@ -48,7 +48,7 @@
         }
 
         getActiveProjects() {
-            return this.projectResource.getActiveProjects();
+            return this.projectResource.getActiveProjects().$promise;
         }
 
         getProject(projectId) {

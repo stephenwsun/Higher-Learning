@@ -10,6 +10,7 @@ namespace HigherLearningApp.Services
         List<Project> GetUserProjects(string id);
         List<Project> GetActiveProjects();
         void SaveProject(Project project, string id);
+        void SaveVote(int id, int voteValue);
         Project GetProject(int id);
     }
 }

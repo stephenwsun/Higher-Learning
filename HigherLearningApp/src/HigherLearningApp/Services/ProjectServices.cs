@@ -25,7 +25,7 @@ namespace HigherLearningApp.Services
         /// <returns></returns>
         public List<Project> GetAllProjects()
         {
-            var projects = _repo.Query<Project>().ToList();
+            var projects = _repo.Query<Project>().Include(p => p.Images).ToList();
             return projects;
         }
 
@@ -87,6 +87,21 @@ namespace HigherLearningApp.Services
                 projectEdit.Time = DateTime.UtcNow;
                 _repo.SaveChanges();
             }
+        }
+
+        public void SaveVote(int id, int voteValue)
+        {
+            var project = _repo.Query<Project>().Where(p => p.Id == id).FirstOrDefault();
+
+            if(voteValue == 1)
+            {
+                project.Votes++;
+            }
+            else if(voteValue == 0)
+            {
+                project.Votes--;
+            }
+            _repo.SaveChanges();
         }
 
         public void DeleteProject(int id)

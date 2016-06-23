@@ -40,7 +40,7 @@
         // CRUD - Read
 
         getAllProjects() {
-            return this.projectResource.getAllProjects()
+            return this.projectResource.getAllProjects();
         }
 
         getUserProjects() {

@@ -73,6 +73,16 @@
             });
         }
 
+        voteProjectUp() {
+            this.projectServices.voteProject(this.projectId, 1);
+            this.getProject();
+        }
+
+        voteProjectDown() {
+            this.projectServices.voteProject(this.projectId, 0);
+            this.getProject();
+        }
+
         // Filepicker code
         public pickFile() {
             this.filepickerService.pick({
@@ -90,8 +100,6 @@
                 // generally you want to put your code here that will send the url info to the database
                 this.projectServices.saveImage(this.projectId, this.file).then(() => {
                     this.getProject();
-                    //let element: any = document.getElementById("image");
-                    //element.reset();
                 });
                 console.log("url sent");
             }
@@ -147,9 +155,6 @@
         cancel() {
             this.$state.go('everything');
         }
-
-        
-
     }
 
     export class ProjectEditController {

@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row title">
-        <h1><span class="title">Add Images</span></h1>
+        <h1><span class="title">Add Featured Images</span></h1>
     </div>
 </div>
 
@@ -10,4 +10,23 @@
 
 <hr />
 
-<button ng-click="controller.pickFile()">Upload</button>
+<!--<button ng-click="controller.pickFile()">Upload</button>-->
+<button type="button" class="btn btn-success btn-lg" ng-click="controller.pickFile()">Upload an Image</button>
+
+<div id="category-button" class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Project Categories
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="/everything">Everything</a></li>
+        <li><a href="/featured">Featured</a></li>
+        <li><a href="/3DPrinting">3D Printing</a></li>
+        <li><a href="/computers">Computers</a></li>
+        <li><a href="/embeddedSystems">Embedded Systems</a></li>
+        <li><a href="/webDevelopment">Web Development</a></li>
+
+        <li class="divider"></li>
+        <li><a href="/projects">Project Categories</a></li>
+    </ul>
+</div>  

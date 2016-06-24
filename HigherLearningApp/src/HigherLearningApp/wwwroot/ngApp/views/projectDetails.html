@@ -44,6 +44,12 @@
     </div>
 </div>
 
+<!--<form id="vote">
+    <input type="button" class="btn btn-success btn-lg" value="Upvote" ng-click="controller.voteProjectUp()" />
+    <input type="button" class="btn btn-success btn-lg" value="Downvote" ng-click="controller.voteProjectDown()" />
+    <h4>Votes = {{controller.project.votes}}</h4>
+</form>-->
+
 <div class="row">
     <div class="container col-md-8 col-md-offset-2">
         <p class="post" ta-bind ng-model="controller.project.body">
@@ -71,11 +77,6 @@
         <li><a href="/projects">Project Categories</a></li>
     </ul>
 </div>
-
-<button type="button" class="btn btn-success btn-lg" ng-click="controller.voteProjectUp()">Upvote</button>
-<button type="button" class="btn btn-success btn-lg" ng-click="controller.voteProjectDown()">Downvote</button>
-<h4>Votes = {{controller.project.votes}}</h4>
-
 
 <div class="row spacer"></div>
 <hr />

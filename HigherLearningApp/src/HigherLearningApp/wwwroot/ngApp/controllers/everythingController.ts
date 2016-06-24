@@ -76,11 +76,15 @@
         voteProjectUp() {
             this.projectServices.voteProject(this.projectId, 1);
             this.getProject();
+            let element: any = document.getElementById("vote");
+            element.reset();
         }
 
         voteProjectDown() {
             this.projectServices.voteProject(this.projectId, 0);
             this.getProject();
+            let element: any = document.getElementById("vote");
+            element.reset();
         }
 
         // Filepicker code
